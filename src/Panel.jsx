@@ -89,7 +89,7 @@ class Panel extends Component {
     const {
       prefixCls, className, placeholder, disabledHours, disabledMinutes,
       disabledSeconds, hideDisabledOptions, allowEmpty, showHour, showMinute, showSecond,
-      format, defaultOpenValue, clearText, onEsc, addon, use12Hours, onClear,
+      format, defaultOpenValue, clearText, onEsc, addon, use12Hours, onClear, alien,
     } = this.props;
     const {
       value, currentSelectPanel,
@@ -98,7 +98,8 @@ class Panel extends Component {
     const disabledMinuteOptions = disabledMinutes(value ? value.hour() : null);
     const disabledSecondOptions = disabledSeconds(value ? value.hour() : null,
       value ? value.minute() : null);
-    const hourOptions = generateOptions(24, disabledHourOptions, hideDisabledOptions);
+    const maxHour = alien ? 25 : 24
+    const hourOptions = generateOptions(maxHour, disabledHourOptions, hideDisabledOptions);
     const minuteOptions = generateOptions(60, disabledMinuteOptions, hideDisabledOptions);
     const secondOptions = generateOptions(60, disabledSecondOptions, hideDisabledOptions);
 
